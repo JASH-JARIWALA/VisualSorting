@@ -37,7 +37,7 @@ setTimeout(() => {
     }
 
     console.log(arr.length);
-    swapDec();
+    random();
     btn1.style.display = 'block';
     btn2.style.display = 'block';
 
@@ -46,18 +46,23 @@ setTimeout(() => {
 let temp = null;
 let loopCount = 0;
 
+var exitLoop = false;
+
 const swapAsc = async () => {
-
-
+    btn1.disabled = true;
+    if (exitLoop){ return; }
 
     let i = 0;
    
      waitI = async() => {
+        if (exitLoop){ return; }
         setTimeout(async() => {
+            if (exitLoop){ return; }
             if ( i < arr.length ) {
                 let j=0;
                     waitJ = async() => {
                         setTimeout(async() => {
+                            if (exitLoop){ return; }
                             if ( j < arr.length - 1 ) {
                                 if (arr[j].p > arr[j + 1].p) {
 
@@ -72,18 +77,19 @@ const swapAsc = async () => {
                                     await ctx3.putImageData(arr[j].data, arr[j].i, arr[j].j);
                                     await ctx3.putImageData(arr[j + 1].data, arr[j + 1].i, arr[j + 1].j);
                                 }
-                    
+                                
                                 j++;
                                 
                                     waitJ();
                             }
                         }, 50);
                     }
+                    if (exitLoop){ return; }
                     waitJ();
 
                     
                 i++;
-                    
+                if (exitLoop){ return; }
                 waitI();
             }
         }, 100);
@@ -95,10 +101,16 @@ const swapAsc = async () => {
            swapAsc();
            loopCount++;        
            console.log('here');
+       }else{
+        btn1.disabled = false;
+            if(exitLoop){
+                exitLoop = false;
+                return;
+            }
        }
         
-    }, loopCount==0 ? 1200 : 2000);
-
+    }, loopCount==0 ? 1400 : 2000);
+    if (exitLoop){ return; }
 
 
 
@@ -124,13 +136,13 @@ const swapAsc = async () => {
     //     }
 
     // }
-
+    
 }
 
 
 
 
-const swapDec = () => {
+const random = () => {
 
     for (let i = 0; i < arr.length; i++) {
 
@@ -156,4 +168,15 @@ const swapDec = () => {
 
     }
 
+}
+
+const swapDec = () => {
+    exitLoop = true;
+    btn1.disabled = true;
+    random();
+    setTimeout(()=>{
+        exitLoop = false;
+        btn1.disabled = false;
+        loopCount = 0;
+    },1200)
 }
