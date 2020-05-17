@@ -1,9 +1,9 @@
 
-var btn = document.getElementsByTagName("button");
+var btn1 = document.getElementById("btn1")
+var btn2 = document.getElementById("btn2")
 
-btn.forEach(element => {
-    element.style.display = "none"; 
-});
+btn1.style.display = 'none';
+btn2.style.display = 'none';
 
 const c1 = document.getElementById('c');
 ctx1 = c1.getContext('2d');
@@ -38,9 +38,8 @@ setTimeout(() => {
 
     console.log(arr.length);
     swapDec();
-    btn.forEach(element => {
-        element.style.display = "block"; 
-    });
+    btn1.style.display = 'block';
+    btn2.style.display = 'block';
 
 }, 1000);
 
