@@ -99,7 +99,7 @@ const swapAsc = async () => {
 
     waitI();
     setTimeout(() => {
-       if (loopCount < 6) {        
+       if (loopCount < 10) {        
            swapAsc();
            loopCount++;        
            console.log('here');
