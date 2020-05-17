@@ -1,6 +1,14 @@
 
+var btn = document.getElementsByTagName("button");
+
+btn.forEach(element => {
+    element.style.display = "none"; 
+});
+
 const c1 = document.getElementById('c');
 ctx1 = c1.getContext('2d');
+
+
 
 const c3 = document.getElementById('c3');
 const ctx3 = c3.getContext('2d');
@@ -30,6 +38,9 @@ setTimeout(() => {
 
     console.log(arr.length);
     swapDec();
+    btn.forEach(element => {
+        element.style.display = "block"; 
+    });
 
 }, 1000);
 
