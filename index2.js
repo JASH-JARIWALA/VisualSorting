@@ -38,7 +38,7 @@ setTimeout(() => {
     }
 
     console.log(arr.length);
-    random();
+    random();//sort descending
     btn1.style.display = 'block';
     btn2.style.display = 'block';
     waitdiv.style.display = 'none';
@@ -99,12 +99,13 @@ const swapAsc = async () => {
 
     waitI();
     setTimeout(() => {
-       if (loopCount < 10) {        
+       if (loopCount < 6) {        
            swapAsc();
            loopCount++;        
            console.log('here');
-       }else{
+       }else{// last loop
         btn1.disabled = false;
+        sortImmediate()
             if(exitLoop){
                 exitLoop = false;
                 return;
@@ -113,32 +114,32 @@ const swapAsc = async () => {
         
     }, loopCount==0 ? 1400 : 2000);
     if (exitLoop){ return; }
-
-
-
-    // for (let i = 0; i < arr.length; i++) {
-
-    //     for (let j = 0; j < arr.length - 1; j++) {
-
-
-    //         if (arr[j].p > arr[j + 1].p) {
-
-    //             temp = arr[j].data;
-    //             arr[j].data = arr[j + 1].data;
-    //             arr[j + 1].data = temp;
-
-    //             temp = arr[j].p;
-    //             arr[j].p = arr[j + 1].p;
-    //             arr[j + 1].p = temp;
-
-    //             ctx3.putImageData(arr[j].data, arr[j].i, arr[j].j);
-    //             ctx3.putImageData(arr[j + 1].data, arr[j + 1].i, arr[j + 1].j);
-    //         }
-
-    //     }
-
-    // }
     
+}
+
+const sortImmediate = () => {
+      for (let i = 0; i < arr.length; i++) {
+
+        for (let j = 0; j < arr.length - 1; j++) {
+
+
+            if (arr[j].p > arr[j + 1].p) {
+
+                temp = arr[j].data;
+                arr[j].data = arr[j + 1].data;
+                arr[j + 1].data = temp;
+
+                temp = arr[j].p;
+                arr[j].p = arr[j + 1].p;
+                arr[j + 1].p = temp;
+
+                ctx3.putImageData(arr[j].data, arr[j].i, arr[j].j);
+                ctx3.putImageData(arr[j + 1].data, arr[j + 1].i, arr[j + 1].j);
+            }
+
+        }
+
+    }
 }
 
 
