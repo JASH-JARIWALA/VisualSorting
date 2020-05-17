@@ -1,6 +1,7 @@
 
 var btn1 = document.getElementById("btn1")
 var btn2 = document.getElementById("btn2")
+var waitdiv = document.getElementById("wait")
 
 btn1.style.display = 'none';
 btn2.style.display = 'none';
@@ -40,6 +41,7 @@ setTimeout(() => {
     random();
     btn1.style.display = 'block';
     btn2.style.display = 'block';
+    waitdiv.style.display = 'none';
 
 }, 1000);
 
